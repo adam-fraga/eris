@@ -5,14 +5,24 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var promptCmd = &cobra.Command{
-	Use:   "prompt",
-	Short: "Ask the LLM a prompt",
+var thinkPomptCmd = &cobra.Command{
+	Use:   "think",
+	Short: "Ask the LLM a thinking prompt",
 	Run: func(cmd *cobra.Command, args []string) {
-		handler.RunPrompt()
+		handler.RunThinkingPrompt()
+	},
+}
+
+var codePomptCmd = &cobra.Command{
+	Use:   "code",
+	Short: "Ask the LLM a coding prompt",
+	Run: func(cmd *cobra.Command, args []string) {
+		handler.RunCodingPrompt()
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(promptCmd)
+	rootCmd.AddCommand(thinkPomptCmd)
+	rootCmd.AddCommand(codePomptCmd)
+
 }
